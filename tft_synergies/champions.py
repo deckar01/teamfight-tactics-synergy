@@ -1,4 +1,4 @@
-from synergies import *
+from .synergies import *
 
 class Champion:
     @classmethod
