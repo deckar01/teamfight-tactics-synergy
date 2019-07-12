@@ -21,9 +21,9 @@ optional arguments:
 
 ```sh
 $ ./teams.py --size=3 --top=1
-Elise, Nidalee, Shyvana
-3 Shapeshifters
-Bonus: 3.0000
+Ahri, Lulu, Nidalee
+2 Sorcerers, 2 Wilds
+Bonus: 3.7825
 ```
 
 ## TODO

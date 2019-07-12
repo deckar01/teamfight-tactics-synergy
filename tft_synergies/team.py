@@ -15,14 +15,19 @@ class Team:
         return synergies
 
     def get_score(self):
-        return sum(
-            synergy.score(len(self.champions), len(champions))
+        synergy_score = sum(
+            synergy.score(self, champions)
             for synergy, champions in self.synergies.items()
         )
+        champion_score = sum(
+            champion.weight
+            for champion in self.champions
+        )
+        return synergy_score + champion_score
 
     def get_synergy_names(self):
         names = [
-            synergy.name(len(self.champions), len(champions))
+            synergy.name(self, champions)
             for synergy, champions in self.synergies.items()
         ]
         return [name for name in names if name]
