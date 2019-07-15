@@ -1,5 +1,6 @@
 import sys
 from itertools import combinations
+from random import sample
 from heapq import heappush, heappop
 
 from champions import Champion
@@ -14,11 +15,20 @@ if __name__ == '__main__':
         if champion_drop_rate[team_size][champion.tier - 1]
     ]
     teams = []
-    for picks in combinations(available_champions, team_size):
-        team = Team(picks)
-        heappush(teams, team)
-        if len(teams) > 10:
-            heappop(teams)
+    try:
+        #while True:
+        #seed = sample(available_champions, 4)
+        #remaining = list(set(available_champions) - set(seed))
+        #for picks in combinations(remaining, team_size - 4):
+        for picks in combinations(available_champions, team_size):
+            #team = Team([*seed, *picks])
+            team = Team(picks)
+            heappush(teams, team)
+            if len(teams) > 10:
+                heappop(teams)
+    except KeyboardInterrupt as e:
+        print(e)
+        pass
     teams.sort()
     for team in teams:
         print(', '.join(team.get_champion_names()))
